@@ -1,0 +1,11 @@
+{
+  "name": "rentahome-server-nodejs",
+  "version": "1.0.0",
+  "description": "Server to provide data for material ui rent a home react app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "HRSArgyropoulos",
+  "license": "MIT"
+}

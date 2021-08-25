@@ -8,8 +8,10 @@ const app = express();
 app.use(express.json());
 
 // CORS for cross origin requests
-
 app.use(cors());
+
+// DB connection
+require('./db/connection');
 
 // mount routes on root
 app.use(routes);

@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 
 // Host Schema
 const HostSchema = new mongoose.Schema({
-  id: { type: Number, unique: true, required: true },
+  id: { type: Number, required: true },
   name: { type: String, required: true },
   highRatedHost: { type: Boolean, required: true },
 });
 
 const LocationSchema = new mongoose.Schema({
-  id: { type: Number, unique: true, required: true },
+  id: { type: Number, required: true },
   title: { type: String, required: true },
 });
 LocationSchema.index({ title: 1 });

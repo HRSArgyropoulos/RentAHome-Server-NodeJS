@@ -6,4 +6,10 @@ const saveApartment = async (doc) => {
   return await apartment.save();
 };
 
-module.exports = { saveApartment };
+const getApartmentsInitialSearch = async (location) => {
+  return await ApartmentsSchema.find({
+    'location.title': location,
+  }).exec();
+};
+
+module.exports = { saveApartment, getApartmentsInitialSearch };

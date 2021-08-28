@@ -18,8 +18,8 @@ app.use(routes);
 
 // app listening for connections
 
-app.listen(process.env.PORT, process.env.HOST, () => {
+app.listen(process.env.PORT, () => {
   console.log(
-    `Rent A Home server app listening on http://${process.env.HOST}:${process.env.PORT}`
+    `Rent A Home server app listening on PORT ${process.env.PORT}`
   );
 });

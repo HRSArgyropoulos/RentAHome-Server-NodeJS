@@ -8,15 +8,18 @@ const saveApartment = async (doc) => {
 };
 
 const getApartmentsInitialSearch = async (searchOptions) => {
-  const { location, checkIn, checkOut } = searchOptions;
-
-  // get dates from checkin checkout range
-  const searchDates = inbetweenDates(checkIn, checkOut);
+  const { location, checkIn, checkOut, persons } = searchOptions;
 
   // get apartments with this location
   const apartments = await ApartmentsSchema.find({
     'location.title': location,
-  }).exec();
+  })
+    .where('capacity')
+    .gte(persons)
+    .exec();
+
+  // get dates from checkin checkout range
+  const searchDates = inbetweenDates(checkIn, checkOut);
 
   // build apartments list for response
   const apartmentsResults = new Array();

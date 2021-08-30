@@ -24,6 +24,7 @@ const ApartmentSchema = new mongoose.Schema({
   price: { type: Number, required: true },
   location: LocationSchema,
   host: HostSchema,
+  availableDates: [{ type: String }],
 });
 ApartmentSchema.index({ apartmentId: 1 });
 

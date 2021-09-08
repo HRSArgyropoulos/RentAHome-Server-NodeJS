@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 // Host Schema
 const HostSchema = new mongoose.Schema({
-  id: { type: Number, required: true },
+  id: { type: String, required: true },
   name: { type: String, required: true },
-  highRatedHost: { type: Boolean, required: true },
+  highRatedHost: { type: Boolean, required: true, default: false },
 });
 
 const LocationSchema = new mongoose.Schema({
@@ -35,4 +35,4 @@ const ApartmentsSchema = mongoose.model(
   ApartmentSchema
 );
 
-module.exports = { ApartmentsSchema };
+module.exports = { ApartmentsSchema, HostSchema };

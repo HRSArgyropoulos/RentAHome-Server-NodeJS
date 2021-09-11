@@ -7,26 +7,20 @@ const HostSchema = new mongoose.Schema({
   highRatedHost: { type: Boolean, required: true, default: false },
 });
 
-const LocationSchema = new mongoose.Schema({
-  id: { type: Number, required: true },
-  title: { type: String, required: true },
-});
-LocationSchema.index({ title: 1 });
-
 // Apartment Schema
 const ApartmentSchema = new mongoose.Schema({
-  apartmentId: { type: Number, unique: true, required: true },
+  apartmentId: { type: String, unique: true, required: true },
   title: { type: String, required: true },
   capacity: { type: Number, required: true },
   baths: { type: Number, required: true },
   spacing: { type: String, required: true },
   beds: { type: Number, required: true },
   price: { type: Number, required: true },
-  location: LocationSchema,
+  location: { type: String, required: true },
   host: HostSchema,
   availableDates: [{ type: String }],
 });
-ApartmentSchema.index({ apartmentId: 1 });
+ApartmentSchema.index({ apartmentId: 1 }, { location: 1 });
 
 // Export models
 // Apartments model

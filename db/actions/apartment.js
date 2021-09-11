@@ -1,9 +1,17 @@
 const { ApartmentsSchema } = require('../models/apartment');
 const { inbetweenDates } = require('../../functions/dates');
+const crypto = require('crypto');
 
-const saveApartment = async (doc) => {
+const saveApartment = async (data) => {
+  const { apartment: apartmentData, host } = data;
+  // create apartment id
+  const apartmentId = crypto.randomBytes(10).toString('hex');
   // create apartment
-  const apartment = await new ApartmentsSchema(doc);
+  const apartment = await new ApartmentsSchema({
+    apartmentId,
+    ...apartmentData,
+    host: { id: host.hostId, name: host.hostName },
+  });
   return await apartment.save();
 };
 
@@ -12,7 +20,7 @@ const getApartmentsInitialSearch = async (searchOptions) => {
 
   // get apartments with this location
   const apartments = await ApartmentsSchema.find({
-    'location.title': location,
+    location: location,
   })
     .where('capacity')
     .gte(persons)
